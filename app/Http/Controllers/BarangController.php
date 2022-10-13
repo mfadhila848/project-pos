@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use App\Http\Requests\StoreBarangRequest;
 use App\Http\Requests\UpdateBarangRequest;
+use App\Models\Kategori;
+use App\Models\Merek;
+use App\Models\Perusahaan;
+use App\Models\Satuan;
+use App\Models\Supplier;
 
 class BarangController extends Controller
 {
@@ -15,7 +20,32 @@ class BarangController extends Controller
      */
     public function index()
     {
-        //
+        $data['categories'] = Kategori::get();
+        $data['supplier'] = Supplier::get();
+        $data['merek'] = Merek::get();
+        $data['satuan'] = Satuan::get();
+        $data['perusahaan'] = Perusahaan::get();
+        // $data['barang'] = Barang::get();
+        $data['barang'] = Barang::leftJoin('t_kategori AS K', 'K.id', 't_barang.id_kategori')
+        ->leftJoin('t_supplier AS SP', 'SP.id', 't_barang.id_supplier')
+        ->leftJoin('t_satuan AS ST', 'ST.id', 't_barang.id_satuan')
+        ->leftJoin('t_merek AS M', 'M.id', 't_barang.id_merek')
+        ->leftJoin('t_perusahaan AS P', 'P.id', 't_barang.id_perusahaan')
+        ->select('t_barang.*', 'K.nama AS nama_kategori', 'SP.nama AS nama_supplier', 'ST.nama AS nama_satuan', 'M.nama AS nama_merek', 'P.nama AS nama_perusahaan')     
+        ->orderBy('t_barang.id', 'desc')
+        ->get();
+        
+        // dd($data['barang']); die;
+        return view('barang.index', $data);
+    }
+
+    public function index2(){
+        $data['categories'] = Kategori::get();
+        $data['supplier'] = Supplier::get();
+        $data['merek'] = Merek::get();
+        $data['satuan'] = Satuan::get();
+        $data['perusahaan'] = Perusahaan::get();
+        return view('barang.tambah', $data);
     }
 
     /**
@@ -36,7 +66,9 @@ class BarangController extends Controller
      */
     public function store(StoreBarangRequest $request)
     {
-        //
+        // dd($request); die;
+        $input = Barang::create($request->all());
+        return redirect('/barang')->with('success', 'Input data Barang berhasil!');
     }
 
     /**
@@ -70,7 +102,8 @@ class BarangController extends Controller
      */
     public function update(UpdateBarangRequest $request, Barang $barang)
     {
-        //
+        $barang->update($request->all());
+        return redirect('/barang')->with('success', 'Update Data berhasil');
     }
 
     /**
@@ -81,6 +114,7 @@ class BarangController extends Controller
      */
     public function destroy(Barang $barang)
     {
-        //
+        $barang->delete();
+        return redirect('/barang')->with('delete', 'Delete Data berhasil');
     }
 }

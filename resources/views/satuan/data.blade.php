@@ -1,4 +1,4 @@
-<table id="tbl-data-satuan" class="table table-bordered table-hover table-compact">
+<table id="tbl-data-satuan" class="table table-bordered table-hover table-compact" style="width: 100%;">
     <thead>
         <tr>
             <td>No</td>

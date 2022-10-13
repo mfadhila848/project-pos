@@ -13,7 +13,7 @@
             @csrf
             <div id="method"></div>
             <div class="form-group row">
-                <div class="form-group" style="width: 100%;">
+                <div class="form-group" style="width: 95%; margin: auto;">
                     <label for="nama">Nama Kategori</label>
                     <input type="text" class="form-control" id="nama" placeholder="Nama Kategori" name="nama">
                 </div>
