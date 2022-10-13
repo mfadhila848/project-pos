@@ -15,7 +15,16 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        //
+        $data['pelanggan'] = Pelanggan::leftJoin('t_perusahaan AS P', 'P.id', 't_pelanggan.id_perusahaan')
+        ->select('t_pelanggan.*', 'P.nama AS nama_perusahaan')     
+        ->orderBy('t_pelanggan.id', 'desc')
+        ->get();
+        return view('pelanggan.index', $data);
+    }
+
+    public function index2()
+    {
+        return view('pelanggan.tambah');
     }
 
     /**
@@ -36,7 +45,8 @@ class PelangganController extends Controller
      */
     public function store(StorePelangganRequest $request)
     {
-        //
+        $input = Pelanggan::create($request->all());
+        return redirect('/pelanggan')->with('success', 'Input data Supplier berhasil!');
     }
 
     /**
@@ -70,7 +80,8 @@ class PelangganController extends Controller
      */
     public function update(UpdatePelangganRequest $request, Pelanggan $pelanggan)
     {
-        //
+        $pelanggan->update($request->all());
+        return redirect('/pelanggan')->with('success', 'Update Data berhasil');
     }
 
     /**
@@ -81,6 +92,7 @@ class PelangganController extends Controller
      */
     public function destroy(Pelanggan $pelanggan)
     {
-        //
+        $pelanggan->delete();
+        return redirect('/pelanggan')->with('delete', 'Delete Data berhasil');
     }
 }

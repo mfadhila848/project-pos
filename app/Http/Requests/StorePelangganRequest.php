@@ -13,7 +13,7 @@ class StorePelangganRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class StorePelangganRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nama' => 'required',
+            'alamat' => 'required',
+            'tlp' => 'required'
         ];
     }
 }

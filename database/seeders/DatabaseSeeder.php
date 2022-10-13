@@ -41,6 +41,40 @@ class DatabaseSeeder extends Seeder
             'logo' => 'dafdaf'
         ]);
 
+        DB::table('t_kategori')->insert([
+            'nama' => 'Makanan'
+        ]);
+
+        DB::table('t_kategori')->insert([
+            'nama' => 'Minuman'
+        ]);
+
+        DB::table('t_merek')->insert([
+            'nama' => 'Nabati'
+        ]);
+
+        DB::table('t_merek')->insert([
+            'nama' => 'Aqua'
+        ]);
+
+        DB::table('t_satuan')->insert([
+            'nama' => 'Sachet'
+        ]);
+
+        DB::table('t_satuan')->insert([
+            'nama' => 'Meter'
+        ]);
+
+        DB::table('t_supplier')->insert([
+            'nama' => 'PT. Surya Dana',
+            'alamat' => 'Jl. Siliwangi no 44 cianjur',
+            'tlp' => '234234234',
+            'salesman' => 'Asep',
+            'bank' => 'Syariah',
+            'no_rekening' => '213123',
+            'id_perusahaan' => '1'
+        ]);
+
         // DB::table('t_pegawai')->insert([
         //     'nama' => 'fadhil',
         //     'alamat' => 'cianjur',

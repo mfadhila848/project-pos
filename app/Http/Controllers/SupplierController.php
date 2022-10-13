@@ -21,6 +21,10 @@ class SupplierController extends Controller
         return view('supplier.index', $data);
     }
 
+    public function index2(){
+        return view('supplier.tambah');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
