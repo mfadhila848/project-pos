@@ -128,7 +128,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-solid fa-business-time"></i>
+              <i class="nav-icon fas fa-solid fa-truck-moving"></i>
               {{-- <i class="nav-icon fas fa-solid fa-cart-plus"></i> --}}
               <p>
                 Supplier
@@ -244,7 +244,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-solid fa-gears"></i>
+              <i class="nav-icon fas fa-solid fa-cog"></i>
               <p>
                 Setup Perusahaan
                 <i class="right fas fa-angle-right"></i>

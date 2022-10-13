@@ -17,7 +17,7 @@
 <script src="{{ asset('assets') }}/plugins/jquery/jquery.min.js"></script>
 <script src="{{ asset('assets') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="{{ asset('assets') }}/dist/js/adminlte.min.js"></script>
-<script src="{{ asset('assets') }}/dist/js/demo.js"></script>
+{{-- <script src="{{ asset('assets') }}/dist/js/demo.js"></script> --}}
 <script src="{{ asset('assets') }}/plugins/datatables/jquery.dataTables.js"></script>
 <script src="{{ asset('assets') }}/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 <script src="{{ asset('js') }}/sweetalert2.all.min.js"></script>
