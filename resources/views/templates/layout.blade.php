@@ -101,13 +101,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ url('merek') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Set Merek</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ url('satuan') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Set Satuan</p>
                 </a>

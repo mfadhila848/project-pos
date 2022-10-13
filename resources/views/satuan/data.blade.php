@@ -7,7 +7,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($merek as $item)
+        @foreach ($satuan as $item)
             <tr>
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->nama }}</td>

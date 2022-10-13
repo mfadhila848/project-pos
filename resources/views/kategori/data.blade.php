@@ -12,7 +12,7 @@
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->nama }}</td>
                 <td>
-                    <button class="btn" type="button" style="color: green;" title="Edit" data-mode="edit" data-toggle="modal" data-target="#formModalBarang" data-id_kategori="{{ $item->id }}" data-nama_kategori="{{ $item->nama }}">
+                    <button class="btn" type="button" style="color: green;" title="Edit" data-mode="edit" data-toggle="modal" data-target="#formModalKategori" data-id_kategori="{{ $item->id }}" data-nama_kategori="{{ $item->nama }}">
                         <i class="fas fa-edit"></i>
                     </button>
                     <form action="{{ route('kategori.destroy', $item->id) }}" style="display: inline;" method="post">

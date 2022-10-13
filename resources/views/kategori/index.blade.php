@@ -74,7 +74,7 @@
                         </button>
                     </div>
                 @endif
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModalBarang">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModalKategori">
                     <i class="fas fa-plus"></i>&nbsp; Tambah Data
                 </button>
                 <br><br>
@@ -99,7 +99,7 @@
     </script>
     <script>
         $(document).ready(function(){
-          $('#formModalBarang').on("show.bs.modal", function(e){
+          $('#formModalKategori').on("show.bs.modal", function(e){
             const btn = $(e.relatedTarget)
             const id_kategori = btn.data('id_kategori')
             const nama_kategori = btn.data('nama_kategori')

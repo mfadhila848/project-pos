@@ -74,7 +74,7 @@
                         </button>
                     </div>
                 @endif
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModalBarang">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModalMerek">
                     <i class="fas fa-plus"></i>&nbsp; Tambah Data
                 </button>
                 <br><br>
