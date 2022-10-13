@@ -10,6 +10,9 @@
   <link rel="stylesheet" href="{{ asset('assets') }}/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('assets') }}/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="{{ asset('assets') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+  {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"> --}}
+  @stack('styles')
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -86,7 +89,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ url('kategori') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Set Kategori</p>
                 </a>
@@ -95,6 +98,18 @@
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Set Perusahaan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Set Merek</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Set Satuan</p>
                 </a>
               </li>
             </ul>
@@ -147,7 +162,8 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-solid fa-cart-plus"></i>
+              <i class="nav-icon fas fa-solid fa-business-time"></i>
+              {{-- <i class="nav-icon fas fa-solid fa-cart-plus"></i> --}}
               <p>
                 Supplier
                 <i class="right fas fa-angle-right"></i>
@@ -170,9 +186,55 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-solid fa-user"></i>
+              <i class="nav-icon fas fa-solid fa-cart-plus"></i>
               <p>
                 Pelanggan
+                <i class="right fas fa-angle-right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Tambah Produk</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Lihat Data Produk</p>
+                    </a>
+                </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-solid fa-cart-plus"></i>
+              <p>
+                Pembelian
+                <i class="right fas fa-angle-right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Tambah Produk</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Lihat Data Produk</p>
+                    </a>
+                </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-solid fa-user"></i>
+              <p>
+                Penjualan
                 <i class="right fas fa-angle-right"></i>
               </p>
             </a>
