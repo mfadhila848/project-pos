@@ -14,7 +14,8 @@ class MerekController extends Controller
      */
     public function index()
     {
-        //
+        $data['merek'] = Merek::get();
+        return view('merek.index', $data);
     }
 
     /**
@@ -35,7 +36,8 @@ class MerekController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = Merek::create($request->all());
+        return redirect('/merek')->with('success', 'Input data Merek berhasil!');
     }
 
     /**
@@ -69,7 +71,8 @@ class MerekController extends Controller
      */
     public function update(Request $request, Merek $merek)
     {
-        //
+        $merek->update($request->all());
+        return redirect('/merek')->with('success', 'Update Data berhasil');
     }
 
     /**
@@ -80,6 +83,7 @@ class MerekController extends Controller
      */
     public function destroy(Merek $merek)
     {
-        //
+        $merek->delete();
+        return redirect('/merek')->with('delete', 'Delete Data berhasil');
     }
 }

@@ -14,7 +14,8 @@ class SatuanController extends Controller
      */
     public function index()
     {
-        //
+        $data['satuan'] = Satuan::get();
+        return view('satuan.index', $data);
     }
 
     /**
@@ -35,7 +36,8 @@ class SatuanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = Satuan::create($request->all());
+        return redirect('/satuan')->with('success', 'Input data Satuan berhasil!');
     }
 
     /**
@@ -69,7 +71,8 @@ class SatuanController extends Controller
      */
     public function update(Request $request, Satuan $satuan)
     {
-        //
+        $satuan->update($request->all());
+        return redirect('/satuan')->with('success', 'Update Data berhasil');
     }
 
     /**
@@ -80,6 +83,7 @@ class SatuanController extends Controller
      */
     public function destroy(Satuan $satuan)
     {
-        //
+        $satuan->delete();
+        return redirect('/satuan')->with('delete', 'Delete Data berhasil');
     }
 }

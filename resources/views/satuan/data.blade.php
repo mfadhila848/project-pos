@@ -1,8 +1,8 @@
-<table id="tbl-data-merek" class="table table-bordered table-hover table-compact">
+<table id="tbl-data-satuan" class="table table-bordered table-hover table-compact">
     <thead>
         <tr>
             <td>No</td>
-            <td>Nama Merek</td>
+            <td>Nama Satuan</td>
             <td>Action</td>
         </tr>
     </thead>
@@ -12,10 +12,10 @@
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->nama }}</td>
                 <td>
-                    <button class="btn" type="button" style="color: green;" title="Edit" data-mode="edit" data-toggle="modal" data-target="#formModalMerek" data-id_merek="{{ $item->id }}" data-nama_merek="{{ $item->nama }}">
+                    <button class="btn" type="button" style="color: green;" title="Edit" data-mode="edit" data-toggle="modal" data-target="#formModalSatuan" data-id_satuan="{{ $item->id }}" data-nama_satuan="{{ $item->nama }}">
                         <i class="fas fa-edit"></i>
                     </button>
-                    <form action="{{ route('merek.destroy', $item->id) }}" style="display: inline;" method="post">
+                    <form action="{{ route('satuan.destroy', $item->id) }}" style="display: inline;" method="post">
                         @csrf
                         @method('DELETE')
                         <button class="btn delete-data" type="button" style="color: red;" title="Delete">

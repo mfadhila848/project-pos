@@ -8,7 +8,7 @@
 @endpush
 
 @section('title')
-  <title>Merek Page | Nama Perusahaan</title>
+  <title>Satuan Page | Nama Perusahaan</title>
 @endsection
 
 @section('contents')
@@ -17,12 +17,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Merek Page</h1>
+              <h1>Satuan Page</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Merek Page</li>
+                <li class="breadcrumb-item active">Satuan Page</li>
               </ol>
             </div>
           </div>
@@ -35,7 +35,7 @@
         <!-- Default box -->
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Data Merek</h3>
+            <h3 class="card-title">Data Satuan</h3>
   
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -79,10 +79,10 @@
                 </button>
                 <br><br>
                 <div>
-                    @include('merek.form')
+                    @include('satuan.form')
                 </div>
                 <div>
-                    @include('merek.data')
+                    @include('satuan.data')
                 </div>
           </div>
           <!-- /.card-footer-->
@@ -95,27 +95,27 @@
 
 @push('scripts')
     <script>
-        $('#tbl-data-merek').DataTable();
+        $('#tbl-data-satuan').DataTable();
     </script>
     <script>
         $(document).ready(function(){
-          $('#formModalMerek').on("show.bs.modal", function(e){
+          $('#formModalSatuan').on("show.bs.modal", function(e){
             const btn = $(e.relatedTarget)
-            const id_merek = btn.data('id_merek')
-            const nama_merek = btn.data('nama_merek')
+            const id_satuan = btn.data('id_satuan')
+            const nama_satuan = btn.data('nama_satuan')
             const mode = btn.data('mode')
             const modal = $(this)
         
             if(mode === 'edit'){
-                modal.find('#modal-title').text("Edit Data Merek")
-                modal.find('.modal-body #nama_merek').val(nama_merek)
+                modal.find('#modal-title').text("Edit Data Satuan")
+                modal.find('.modal-body #nama_satuan').val(nama_satuan)
                 modal.find('.modal-footer #btn-submit').text('Update')
-                modal.find('.modal-body form').attr('action', '/merek/' + id_merek)
+                modal.find('.modal-body form').attr('action', '/satuan/' + id_satuan)
                 modal.find('.modal-body #method').html('{{ method_field('PATCH') }}')
             } else {
-                modal.find('#modal-title').text("Tambah Data Merek")
-                modal.find('.modal-body #id_merek').val('')
-                modal.find('.modal-body #nama_merek').val('')
+                modal.find('#modal-title').text("Tambah Data Satuan")
+                modal.find('.modal-body #id_satuan').val('')
+                modal.find('.modal-body #nama_satuan').val('')
                 modal.find('.modal-footer #btn-submit').text('Submit')
                 modal.find('.modal-body #method').html('')
             }

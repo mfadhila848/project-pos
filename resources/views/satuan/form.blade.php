@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="formModalBarang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="formModalSatuan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
     <div class="modal-content">
     <div class="modal-header">
@@ -14,8 +14,8 @@
             <div id="method"></div>
             <div class="form-group row">
                 <div class="form-group" style="width: 100%;">
-                    <label for="nama">Nama Kategori</label>
-                    <input type="text" class="form-control" id="nama" placeholder="Nama Kategori" name="nama">
+                    <label for="nama">Nama Satuan</label>
+                    <input type="text" class="form-control" id="nama" placeholder="Nama Satuan" name="nama">
                 </div>
             </div>
     </div>
