@@ -115,13 +115,13 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Tambah Produk</p>
+                    <p>Tambah Pegawai</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ url('users') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Lihat Data Produk</p>
+                    <p>Lihat Data Pegawai</p>
                     </a>
                 </li>
             </ul>
@@ -162,13 +162,13 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Tambah Produk</p>
+                    <p>Tambah Pelanggan</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('pelanggan') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Lihat Data Produk</p>
+                    <p>Lihat Data Pelanggan</p>
                     </a>
                 </li>
             </ul>
