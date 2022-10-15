@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Perusahaan;
 use App\Models\Satuan;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,7 @@ class SatuanController extends Controller
     public function index()
     {
         $data['satuan'] = Satuan::get();
+        $data['cPerusahaan'] = Perusahaan::select('*')->where('id', auth()->user()->id_perusahaan)->first();
         return view('satuan.index', $data);
     }
 

@@ -8,7 +8,7 @@
 @endpush
 
 @section('title')
-  <title>Perusahaan Page | Nama Perusahaan</title>
+  <title>Perusahaan Page | {{ $cPerusahaan->nama }}</title>
 @endsection
 
 @section('contents')
@@ -55,70 +55,92 @@
                     <span aria-hidden="true">&times;</span>
                     </div>
                 @endif
-                <!-- Modal -->
+                
+                @if($errors->any())
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
                 <form action="" method="POST">
                   @csrf
-                  <div id="method"></div>
+                  <input type="hidden" name="id" value="{{ $cPerusahaan->id }}">
                   <div class="form-group row">
                       <div class="form-group" style="width: 95%; margin: auto;">
                           <label for="nama">Nama Perusahaan</label>
-                          <input type="text" class="form-control" id="nama" placeholder="Nama Perusahaan" name="nama">
+                          <input type="text" class="form-control" id="nama" placeholder="Nama Perusahaan" name="nama" value="{{ $cPerusahaan->nama }}">
                       </div>
                   </div>
                   <div class="form-group row">
                     <div class="form-group" style="width: 95%; margin: auto;">
                         <label for="alamat">Alamat Perusahaan</label>
-                        <input type="text" class="form-control" id="alamat" placeholder="Alamat Perusahaan" name="alamat">
+                        <input type="text" class="form-control" id="alamat" placeholder="Alamat Perusahaan" name="alamat" value="{{ $cPerusahaan->alamat }}">
                     </div>
                   </div>
                   <div class="form-group row">
                     <div class="form-group" style="width: 95%; margin: auto;">
-                        <label for="telepon">Telepon Perusahaan</label>
-                        <input type="text" class="form-control" id="telepon" placeholder="Telepon Perusahaan" name="telepon">
+                        <label for="tlp">Telepon Perusahaan</label>
+                        <input type="text" class="form-control" id="tlp" placeholder="Telepon Perusahaan" name="tlp" value="{{ $cPerusahaan->tlp }}">
                     </div>
                   </div>
                   <div class="form-group row">
                     <div class="form-group" style="width: 95%; margin: auto;">
                         <label for="pemilik">Pemilik Perusahaan</label>
-                        <input type="text" class="form-control" id="pemilik" placeholder="Pemilik Perusahaan" name="pemilik">
+                        <input type="text" class="form-control" id="pemilik" placeholder="Pemilik Perusahaan" name="pemilik" value="{{ $cPerusahaan->pemilik }}">
                     </div>
                   </div>
                   <div class="form-group row">
                     <div class="form-group" style="width: 95%; margin: auto;">
                         <label for="bank">Bank Perusahaan</label>
-                        <input type="text" class="form-control" id="bank" placeholder="Bank Perusahaan" name="bank">
+                        <input type="text" class="form-control" id="bank" placeholder="Bank Perusahaan" name="bank" value="{{ $cPerusahaan->bank }}">
                     </div>
                   </div>
                   <div class="form-group row">
                     <div class="form-group" style="width: 95%; margin: auto;">
                         <label for="no_rekening">No Rekening Perusahaan</label>
-                        <input type="text" class="form-control" id="no_rekening" placeholder="No Rekening Perusahaan" name="no_rekening">
+                        <input type="text" class="form-control" id="no_rekening" placeholder="No Rekening Perusahaan" name="no_rekening" value="{{ $cPerusahaan->no_rekening }}">
                     </div>
                   </div>
                   <div class="form-group row">
                     <div class="form-group" style="width: 95%; margin: auto;">
                         <label for="npwp">NPWP Perusahaan</label>
-                        <input type="text" class="form-control" id="npwp" placeholder="NPWP Perusahaan" name="npwp">
+                        <input type="text" class="form-control" id="npwp" placeholder="NPWP Perusahaan" name="npwp" value="{{ $cPerusahaan->npwp }}">
                     </div>
                   </div>
                   <div class="form-group row">
                     <div class="form-group" style="width: 95%; margin: auto;">
                         <label for="slogan">Slogan Perusahaan</label>
-                        <input type="text" class="form-control" id="slogan" placeholder="Slogan Perusahaan" name="slogan">
+                        <input type="text" class="form-control" id="slogan" placeholder="Slogan Perusahaan" name="slogan" value="{{ $cPerusahaan->slogan }}">
                     </div>
                   </div>
                   <div class="form-group row">
                     <div class="form-group" style="width: 95%; margin: auto;">
                         <label for="email">Email Perusahaan</label>
-                        <input type="email" class="form-control" id="email" placeholder="Email Perusahaan" name="email">
+                        <input type="email" class="form-control" id="email" placeholder="Email Perusahaan" name="email" value="{{ $cPerusahaan->email }}">
                     </div>
                   </div>
                   <div class="form-group row">
                     <div class="form-group" style="width: 95%; margin: auto;">
-                        <label for="logo">Logo Perusahaan</label>
-                        <input type="text" class="form-control" id="logo" placeholder="Logo Perusahaan" name="logo">
+                      <label for="file">Logo Sebelumnya | <a href="#" id="fileSelect">Pilih Logo Baru</a></label>
+                      <br>
+                      <img src="{{ $cPerusahaan->logo }}" alt="{{ $cPerusahaan->nama }}" width="200">
+                      <input type="file" name="image" id="file" style="display: none;" class="form-control">
+                      
+                      <br><br>
+                      <label>Logo Baru</label>
+                      <div id="fileDisplay" style="margin-top: 15px;">
+                          <p>Logo Baru Belum Dipilih</p>
+                      </div>
                     </div>
                   </div>
+                  <a href="#" id="tombol" class="btn btn-primary merah" style="display: none;">Reset Image</a>
+                  <button type="reset" class="btn btn-primary merah">Reset Data</button>
                   <button type="submit" class="btn btn-primary" id="btn-submit" style="margin: 16px;">Simpan Data</button>
                 </form>
           </div>

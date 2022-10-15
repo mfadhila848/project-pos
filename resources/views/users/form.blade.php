@@ -30,16 +30,22 @@
                     <input type="text" class="form-control" id="tlp" placeholder="Telepon" name="tlp">
                 </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row" id="hpsUsername">
                 <div class="form-group" style="width: 95%; margin: auto;">
                     <label for="username">Username</label>
                     <input type="text" class="form-control" id="username" placeholder="Username" name="username">
                 </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row" id="hpsPassword">
                 <div class="form-group" style="width: 95%; margin: auto;">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                    <input type="password" minlength="6" class="form-control" id="password" placeholder="Password" name="password">
+                </div>
+            </div>
+            <div class="form-group row" id="hpsPassword2">
+                <div class="form-group" style="width: 95%; margin: auto;">
+                    <label for="password_confirmation">Ketik Ulang Password</label>
+                    <input type="password" minlength="6" class="form-control" id="password_confirmation" placeholder="Password" name="password_confirmation">
                 </div>
             </div>
     </div>
@@ -50,4 +56,4 @@
     </div>
 </div>
 </div>
-</form>
+    </form>

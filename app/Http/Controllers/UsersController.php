@@ -15,10 +15,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $data['pegawai'] = Pegawai::leftJoin('t_users AS U', 'U.id_pegawai', 't_pegawai.id')
-        ->select('t_pegawai.*', 'U.username')
-        ->orderBy('t_pegawai.id', 'desc')
-        ->get();
+        $data['cPerusahaan'] = User::get();
         return view('users.index', $data);
     }
 
@@ -40,21 +37,22 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $pegawai = Pegawai::create([
-            'nama' => $request->nama,
-            'alamat' => $request->alamat,
-            'tlp' => $request->tlp
+        $request->validate([
+            'nama' => 'required',
+            'alamat' => 'required',
+            'tlp' => 'required',
+            'username' => 'required',
+            'password' => 'required|confirmed'
         ]);
 
-        $latestPegawai = Pegawai::latest('id')->first();
-        
         $user = User::create([
-            'id_pegawai' => $latestPegawai->id,
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'tlp' => $request->tlp,
             'username' => $request->username,
             'password' => bcrypt($request->password)
         ]);
         
-
         return redirect('/users')->with('success', 'Input data Pegawai berhasil!');
 
     }
@@ -88,9 +86,11 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->password = $request->password;
+        $user->update($request->all());
+        return redirect('/users')->with('success', 'Update Data berhasil');
     }
 
     /**
@@ -99,8 +99,14 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect('/users')->with('delete', 'Delete Data berhasil');
+    }
+
+
+    public function profile(){
+        return view('users.profile');
     }
 }

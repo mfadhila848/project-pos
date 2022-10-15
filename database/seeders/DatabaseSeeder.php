@@ -75,19 +75,14 @@ class DatabaseSeeder extends Seeder
             'id_perusahaan' => '1'
         ]);
 
-        // DB::table('t_pegawai')->insert([
-        //     'nama' => 'fadhil',
-        //     'alamat' => 'cianjur',
-        //     'telepon' => '01293912',
-        //     'id_perusahaan' => '1'
-        // ]);
-
-        // DB::table('t_user')->insert([
-        //     'id_pegawai' => '1',
-        //     'username' => 'SuperAdmin',
-        //     'password' => bcrypt('SuperAdmin123'),
-        //     'hak_akses' => 'admin',
-        //     'id_perusahaan' => '1'
-        // ]);
+        DB::table('t_users')->insert([
+            'nama' => 'fadhil',
+            'alamat' => 'cianjur',
+            'tlp' => '01293912',
+            'username' => 'SuperAdmin',
+            'password' => bcrypt('SuperAdmin123'),
+            'hak_akses' => 'admin',
+            'id_perusahaan' => '1'
+        ]);
     }
 }

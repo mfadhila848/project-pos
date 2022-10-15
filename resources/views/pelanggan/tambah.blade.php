@@ -5,8 +5,8 @@
 @endpush
 
 @section('title')
-  <title>Pelanggan Page | Nama Perusahaan</title>
-@endsection
+  <title>Pelanggan Page | {{ $cPerusahaan->nama }}</title>
+  @endsection
 
 @section('contents')
     <!-- Content Header (Page header) -->

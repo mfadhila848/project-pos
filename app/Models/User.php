@@ -20,6 +20,9 @@ class User extends Authenticatable
     protected $table = 't_users';
     protected $primaryKey = 'id';
     protected $fillable = [
+        'nama', 
+        'alamat', 
+        'tlp',
         'id_pegawai',
         'username',
         'password'

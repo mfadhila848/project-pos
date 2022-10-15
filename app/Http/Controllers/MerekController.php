@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Merek;
+use App\Models\Perusahaan;
 use Illuminate\Http\Request;
 
 class MerekController extends Controller
@@ -15,6 +16,7 @@ class MerekController extends Controller
     public function index()
     {
         $data['merek'] = Merek::get();
+        $data['cPerusahaan'] = Perusahaan::select('*')->where('id', auth()->user()->id_perusahaan)->first();
         return view('merek.index', $data);
     }
 

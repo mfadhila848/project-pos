@@ -8,7 +8,7 @@
 @endpush
 
 @section('title')
-  <title>Supplier Page | Nama Perusahaan</title>
+  <title>Supplier Page | {{ $cPerusahaan->nama }}</title>
 @endsection
 
 @section('contents')

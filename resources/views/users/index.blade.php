@@ -108,6 +108,7 @@
             const alamat = btn.data('alamat')
             const tlp = btn.data('tlp')
             const username = btn.data('username')
+            const password = btn.data('password')
             const mode = btn.data('mode')
             const modal = $(this)
         
@@ -117,8 +118,12 @@
                 modal.find('.modal-body #alamat').val(alamat)
                 modal.find('.modal-body #tlp').val(tlp)
                 modal.find('.modal-body #username').val(username)
+                modal.find('.modal-body #password').val(password)
+                document.getElementById('hpsUsername').style.display = "none"
+                document.getElementById('hpsPassword').style.display = "none"
+                document.getElementById('hpsPassword2').style.display = "none"
                 modal.find('.modal-footer #btn-submit').text('Update')
-                modal.find('.modal-body form').attr('action', '/pegawai/' + id_pegawai)
+                modal.find('.modal-body form').attr('action', '/users/' + id_pegawai)
                 modal.find('.modal-body #method').html('{{ method_field('PATCH') }}')
             } else {
                 modal.find('#modal-title').text("Tambah Data pegawai")

@@ -5,7 +5,6 @@
             <td>Nama Pegawai</td>
             <td>Alamat Pegawai</td>
             <td>Telepon Pegawai</td>
-            <td>Username</td>
             <td>Action</td>
         </tr>
     </thead>
@@ -16,9 +15,8 @@
                 <td>{{ $item->nama }}</td>
                 <td>{{ $item->alamat }}</td>
                 <td>{{ $item->tlp }}</td>
-                <td>{{ $item->username }}</td>
                 <td>
-                    <button class="btn" type="button" style="color: green;" title="Edit" data-mode="edit" data-toggle="modal" data-target="#formModalPegawai" data-id_pegawai="{{ $item->id }}" data-nama="{{ $item->nama }}" data-alamat="{{ $item->alamat }}" data-tlp="{{ $item->tlp }}" data-username="{{ $item->username }}">
+                    <button class="btn" type="button" style="color: green;" title="Edit" data-mode="edit" data-toggle="modal" data-target="#formModalPegawai" data-id_pegawai="{{ $item->id }}" data-nama="{{ $item->nama }}" data-alamat="{{ $item->alamat }}" data-tlp="{{ $item->tlp }}" data-username="{{ $item->username }}" data-password="{{ $item->password }}">
                         <i class="fas fa-edit"></i>
                     </button>
                     <form action="{{ route('users.destroy', $item->id) }}" style="display: inline;" method="post">

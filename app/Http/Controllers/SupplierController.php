@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Perusahaan;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 
@@ -18,11 +19,13 @@ class SupplierController extends Controller
         ->select('t_supplier.*', 'P.nama AS nama_perusahaan')     
         ->orderBy('t_supplier.id', 'desc')
         ->get();
+        $data['cPerusahaan'] = Perusahaan::select('*')->where('id', auth()->user()->id_perusahaan)->first();
         return view('supplier.index', $data);
     }
 
     public function index2(){
-        return view('supplier.tambah');
+        $data['cPerusahaan'] = Perusahaan::select('*')->where('id', auth()->user()->id_perusahaan)->first();
+        return view('supplier.tambah', $data);
     }
 
     /**

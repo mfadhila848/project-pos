@@ -112,7 +112,11 @@
             <div class="form-group row">
                 <div class="form-group" style="width: 95%; margin: auto;">
                     <label for="status">Status Barang</label>
-                    <input type="number" class="form-control" id="status" placeholder="Status Barang" name="status">
+                    <select class="form-control" name="status" id="status">
+                        <option value="" disabled="disabled" selected="true">Choose Merek</option>
+                        <option value="1">Aktif</option>
+                        <option value="2">Tidak Aktif</option>
+                    </select>
                 </div>
             </div>
     </div>

@@ -14,21 +14,23 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('t_users', function (Blueprint $table) {
+        Schema::create('kas_masuk', function (Blueprint $table) {
             $table->integer('id')->autoIncrement();
-            $table->integer('id_pegawai');
-            $table->string('username', 100);
-            $table->string('password');
-            $table->rememberToken();
+            $table->date('tgl');
+            $table->double('jumlah');
+            $table->integer('id_user');
+            $table->foreign('id_user')->references('id')->on('t_users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
 
-        Schema::create('t_pegawai', function (Blueprint $table) {
+        Schema::create('kas_keluar', function (Blueprint $table) {
             $table->integer('id')->autoIncrement();
-            $table->string('nama', 50);
-            $table->text('alamat');
-            $table->string('tlp', 20);
+            $table->date('tgl');
+            $table->text('keperluan');
+            $table->double('jumlah');
+            $table->integer('id_user');
+            $table->foreign('id_user')->references('id')->on('t_users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
@@ -41,6 +43,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('t_users');
+        Schema::dropIfExists('kas_masuk');
+        Schema::dropIfExists('kas_keluar');
     }
 };

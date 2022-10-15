@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pelanggan;
 use App\Http\Requests\StorePelangganRequest;
 use App\Http\Requests\UpdatePelangganRequest;
+use App\Models\Perusahaan;
 
 class PelangganController extends Controller
 {
@@ -19,12 +20,14 @@ class PelangganController extends Controller
         ->select('t_pelanggan.*', 'P.nama AS nama_perusahaan')     
         ->orderBy('t_pelanggan.id', 'desc')
         ->get();
+        $data['cPerusahaan'] = Perusahaan::select('*')->where('id', auth()->user()->id_perusahaan)->first();
         return view('pelanggan.index', $data);
     }
 
     public function index2()
     {
-        return view('pelanggan.tambah');
+        $data['cPerusahaan'] = Perusahaan::select('*')->where('id', auth()->user()->id_perusahaan)->first();
+        return view('pelanggan.tambah', $data);
     }
 
     /**

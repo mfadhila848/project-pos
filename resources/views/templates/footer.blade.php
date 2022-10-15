@@ -21,6 +21,7 @@
 <script src="{{ asset('assets') }}/plugins/datatables/jquery.dataTables.js"></script>
 <script src="{{ asset('assets') }}/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 <script src="{{ asset('js') }}/sweetalert2.all.min.js"></script>
+<script src="{{ asset('assets') }}/js/previewImage.js"></script>
 @stack('scripts')
 </body>
 </html>

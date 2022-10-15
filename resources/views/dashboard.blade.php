@@ -5,7 +5,7 @@
 @endpush
 
 @section('title')
-  <title>Dashboard Page | Nama Perusahaan</title>
+  <title>Dashboard Page | {{ $cPerusahaan[0]->nama }}</title>
 @endsection
 
 @section('contents')

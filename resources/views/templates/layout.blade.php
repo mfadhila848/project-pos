@@ -44,6 +44,28 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
     </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            {{-- <img class="img-profile rounded-circle" src="{{ asset('assets') }}/dist/img/AdminLTELogo.png" width="30">--}}
+            <span class="ml-2 d-none d-lg-inline text-success small">{{ auth()->user()->nama }}</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="{{ url('profile') }}">
+                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                Profile
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-items">
+              <form action="{{ route('logout') }}" method="post">
+                @csrf
+                <button type="submit" class="dropdown-item active bg-white" style="font-weight: bold">Logout</button>
+              </form>
+            </a>
+        </div>
+      </li>
+    </ul>
   </nav>
   <!-- /.navbar -->
 
@@ -52,7 +74,7 @@
     <!-- Brand Logo -->
     <a href="{{ asset('assets') }}/index3.html" class="brand-link">
       <img src="{{ asset('assets') }}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text">AdminLTE 3</span>
+      <span class="brand-text">{{ $cPerusahaan->nama }}</span>
     </a>
 
     <!-- Sidebar -->
@@ -63,7 +85,7 @@
           <img src="{{ asset('assets') }}/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">User 1</a>
+          <a href="#" class="d-block">{{ auth()->user()->nama }}</a>
         </div>
       </div>
 
@@ -160,7 +182,7 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('pelanggan2') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Tambah Pelanggan</p>
                     </a>

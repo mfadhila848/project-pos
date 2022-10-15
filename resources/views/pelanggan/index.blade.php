@@ -5,7 +5,7 @@
 @endpush
 
 @section('title')
-  <title>Pelanggan Page | Nama Perusahaan</title>
+  <title>Pelanggan Page | {{ $cPerusahaan->nama }}</title>
 @endsection
 
 @section('contents')

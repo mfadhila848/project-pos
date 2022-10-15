@@ -26,6 +26,7 @@ class BarangController extends Controller
         $data['satuan'] = Satuan::get();
         $data['perusahaan'] = Perusahaan::get();
         // $data['barang'] = Barang::get();
+        $data['cPerusahaan'] = Perusahaan::select('*')->where('id', auth()->user()->id_perusahaan)->first();
         $data['barang'] = Barang::leftJoin('t_kategori AS K', 'K.id', 't_barang.id_kategori')
         ->leftJoin('t_supplier AS SP', 'SP.id', 't_barang.id_supplier')
         ->leftJoin('t_satuan AS ST', 'ST.id', 't_barang.id_satuan')
@@ -45,6 +46,7 @@ class BarangController extends Controller
         $data['merek'] = Merek::get();
         $data['satuan'] = Satuan::get();
         $data['perusahaan'] = Perusahaan::get();
+        $data['cPerusahaan'] = Perusahaan::select('*')->where('id', auth()->user()->id_perusahaan)->first();
         return view('barang.tambah', $data);
     }
 

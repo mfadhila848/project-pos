@@ -40,7 +40,13 @@
                 <td>{{ $item->harga_beli }}</td>
                 <td>{{ $item->keuntungan }}</td>
                 <td>{{ $item->keterangan }}</td>
-                <td>{{ $item->status }}</td>
+                <td>
+                    @if ($item->status == 1)
+                        Aktif
+                    @elseif($item->status == 2)
+                        Tidak Aktif
+                    @endif    
+                </td>
                 <td>
                     <button class="btn" type="button" style="color: green;" title="Edit" data-mode="edit" data-toggle="modal" data-target="#formModalBarang" data-id_barang="{{ $item->id }}" data-kode="{{ $item->kode }}" data-nama_barang="{{ $item->nama }}" data-barcode="{{ $item->barcode }}" data-tebal="{{ $item->tebal }}" data-panjang="{{ $item->panjang }}" data-id_kategori="{{ $item->id_kategori }}" data-id_supplier="{{ $item->id_supplier }}" data-id_satuan="{{ $item->id_satuan }}" data-id_merek="{{ $item->id_merek }}" data-id_perusahaan="{{ $item->id_perusahaan }}" data-stock="{{ $item->stock }}" data-stock_minimal="{{ $item->stock_minimal }}" data-harga_beli="{{ $item->harga_beli }}" data-keuntungan="{{ $item->keuntungan }}" data-keterangan="{{ $item->keterangan }}" data-status="{{ $item->status }}">
                         <i class="fas fa-edit"></i>
