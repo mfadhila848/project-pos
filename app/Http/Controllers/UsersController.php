@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pegawai;
+use App\Models\Perusahaan;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -15,8 +18,15 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $data['cPerusahaan'] = User::get();
+        $data['cPerusahaan'] = Perusahaan::select('*')->where('id', auth()->user()->id_perusahaan)->first();
+        $data['pegawai'] = User::get();
         return view('users.index', $data);
+    }
+
+    public function index2()
+    {
+        $data['cPerusahaan'] = Perusahaan::select('*')->where('id', auth()->user()->id_perusahaan)->first();
+        return view('users.tambah', $data);
     }
 
     /**
@@ -37,12 +47,14 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request); die;
         $request->validate([
             'nama' => 'required',
             'alamat' => 'required',
             'tlp' => 'required',
             'username' => 'required',
-            'password' => 'required|confirmed'
+            'password' => 'required|confirmed',
+            'hak_akses' => 'required'
         ]);
 
         $user = User::create([
@@ -50,7 +62,9 @@ class UsersController extends Controller
             'alamat' => $request->alamat,
             'tlp' => $request->tlp,
             'username' => $request->username,
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
+            'hak_akses' => $request->hak_akses,
+            'id_perusahaan' => $request->id_perusahaan
         ]);
         
         return redirect('/users')->with('success', 'Input data Pegawai berhasil!');
@@ -88,7 +102,6 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $user->password = $request->password;
         $user->update($request->all());
         return redirect('/users')->with('success', 'Update Data berhasil');
     }
@@ -107,6 +120,48 @@ class UsersController extends Controller
 
 
     public function profile(){
-        return view('users.profile');
+        $data['cPerusahaan'] = Perusahaan::select('*')->where('id', auth()->user()->id_perusahaan)->first();
+        return view('users.profile', $data);
+    }
+
+    public function profileUpdate(Request $request){
+        if(Hash::check($request->password, auth()->user()->password) == true) {
+            User::where('id', auth()->user()->id)->update([
+                'nama' => $request->nama,
+                'alamat' => $request->alamat,
+                'tlp' => $request->tlp,
+                'username' => $request->username,
+            ]);
+            return redirect('/profile')->with('success', 'Update Data berhasil');
+        } else {
+            return back()->with('error', 'Password salah!');
+        }
+    }
+
+    public function changePW(){
+        $data['cPerusahaan'] = Perusahaan::select('*')->where('id', auth()->user()->id_perusahaan)->first();
+        return view('users.changePW', $data);
+    }
+
+    public function changePWUpdate(Request $request){
+        $request->validate([
+            'password' => 'required',
+            'new_password' => 'required|confirmed',
+        ]);
+
+        if(Hash::check($request->password, auth()->user()->password) == true) {
+            User::where('id', auth()->user()->id)->update([
+                'password' => bcrypt($request->new_password)
+            ]);
+            Auth::logout();
+
+            $request->session()->invalidate();
+
+            $request->session()->regenerateToken();
+
+            return redirect('/login')->with('success', 'Password Berhasil Diubah');
+        } else {
+            return back()->with('error', 'Password lama salah!');
+        }
     }
 }

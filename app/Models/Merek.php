@@ -9,6 +9,6 @@ class Merek extends Model
 {
     use HasFactory;
     protected $table = 't_merek';
-    protected $fillable = ['nama'];
+    protected $fillable = ['nama', 'id_perusahaan'];
     protected $primaryKey = 'id';
 }

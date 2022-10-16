@@ -5,7 +5,7 @@
 @endpush
 
 @section('title')
-  <title>Barang Page | {{ $cPerusahaan->nama }}</title>
+  <title>Supplier Page | {{ $cPerusahaan->nama }}</title>
 @endsection
 
 @section('contents')
@@ -18,7 +18,7 @@
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
                 <li class="breadcrumb-item active">Supplier Page</li>
               </ol>
             </div>
@@ -44,6 +44,18 @@
             </div>
           </div>
           <div class="card-body">
+            @if($errors->any())
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
             <form action="" method="POST">
                 @csrf
                 <div id="method"></div>
@@ -83,7 +95,7 @@
                         <input type="number" class="form-control" id="no_rekening" placeholder="No Rekening" name="no_rekening">
                     </div>
                 </div>
-                <input type="text" name="id_perusahaan" value="1" style="display: none;">
+                <input type="text" name="id_perusahaan" value="{{ $cPerusahaan->id }}" style="display: none;">
                 <button type="submit" class="btn btn-primary" id="btn-submit" style="margin-left: 0.25rem;">Simpan Data</button>
             </form>
           </div>

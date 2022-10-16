@@ -17,6 +17,7 @@ class SupplierController extends Controller
     {
         $data['supplier'] = Supplier::leftJoin('t_perusahaan AS P', 'P.id', 't_supplier.id_perusahaan')
         ->select('t_supplier.*', 'P.nama AS nama_perusahaan')     
+        ->where('t_supplier.id_perusahaan', auth()->user()->id_perusahaan)     
         ->orderBy('t_supplier.id', 'desc')
         ->get();
         $data['cPerusahaan'] = Perusahaan::select('*')->where('id', auth()->user()->id_perusahaan)->first();
@@ -46,6 +47,15 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nama' => 'required|string|max:50',
+            'alamat' => 'required|string',
+            'tlp' => 'required|string|max:50',
+            'salesman' => 'required|string|max:50',
+            'bank' => 'required|string|max:50',
+            'no_rekening' => 'required|string|max:50',
+        ]);
+        
         $input = Supplier::create($request->all());
         return redirect('/supplier')->with('success', 'Input data Supplier berhasil!');
     }
@@ -81,6 +91,15 @@ class SupplierController extends Controller
      */
     public function update(Request $request, Supplier $supplier)
     {
+        $request->validate([
+            'nama' => 'string|max:50',
+            'alamat' => 'string',
+            'tlp' => 'string|max:50',
+            'salesman' => 'string|max:50',
+            'bank' => 'string|max:50',
+            'no_rekening' => 'string|max:50',
+        ]);
+
         $supplier->update($request->all());
         return redirect('/supplier')->with('success', 'Update Data berhasil');
     }

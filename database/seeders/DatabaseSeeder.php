@@ -37,32 +37,38 @@ class DatabaseSeeder extends Seeder
             'no_rekening' => '213123',
             'npwp' => '23321321321',
             'slogan' => '213123',
-            'email' => 'sfafdsafdasd',
-            'logo' => 'dafdaf'
+            'email' => 'asdsakdjkasjdsakh@gmail.com',
+            'logo' => '/assets/img/buildings.png'
         ]);
 
         DB::table('t_kategori')->insert([
-            'nama' => 'Makanan'
+            'nama' => 'Makanan',
+            'id_perusahaan' => '1'
         ]);
 
         DB::table('t_kategori')->insert([
-            'nama' => 'Minuman'
+            'nama' => 'Minuman',
+            'id_perusahaan' => '1'
         ]);
 
         DB::table('t_merek')->insert([
-            'nama' => 'Nabati'
+            'nama' => 'Nabati',
+            'id_perusahaan' => '1'
         ]);
 
         DB::table('t_merek')->insert([
-            'nama' => 'Aqua'
+            'nama' => 'Aqua',
+            'id_perusahaan' => '1'
         ]);
 
         DB::table('t_satuan')->insert([
-            'nama' => 'Sachet'
+            'nama' => 'Sachet',
+            'id_perusahaan' => '1'
         ]);
 
         DB::table('t_satuan')->insert([
-            'nama' => 'Meter'
+            'nama' => 'Meter',
+            'id_perusahaan' => '1'
         ]);
 
         DB::table('t_supplier')->insert([

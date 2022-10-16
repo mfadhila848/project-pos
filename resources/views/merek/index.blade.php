@@ -21,7 +21,7 @@
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
                 <li class="breadcrumb-item active">Merek Page</li>
               </ol>
             </div>
@@ -108,14 +108,14 @@
         
             if(mode === 'edit'){
                 modal.find('#modal-title').text("Edit Data Merek")
-                modal.find('.modal-body #nama_merek').val(nama_merek)
+                modal.find('.modal-body #nama').val(nama_merek)
                 modal.find('.modal-footer #btn-submit').text('Update')
                 modal.find('.modal-body form').attr('action', '/merek/' + id_merek)
                 modal.find('.modal-body #method').html('{{ method_field('PATCH') }}')
             } else {
                 modal.find('#modal-title').text("Tambah Data Merek")
                 modal.find('.modal-body #id_merek').val('')
-                modal.find('.modal-body #nama_merek').val('')
+                modal.find('.modal-body #nama').val('')
                 modal.find('.modal-footer #btn-submit').text('Submit')
                 modal.find('.modal-body #method').html('')
             }

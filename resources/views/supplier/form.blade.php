@@ -48,7 +48,7 @@
                     <input type="number" class="form-control" id="no_rekening" placeholder="No Rekening" name="no_rekening">
                 </div>
             </div>
-            <input type="text" name="id_perusahaan" value="1" style="display: none;">
+            <input type="text" name="id_perusahaan" value="{{ $cPerusahaan->id }}" style="display: none;">
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

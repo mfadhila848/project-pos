@@ -24,7 +24,8 @@ class UpdatePelangganRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nama' => 'max:50',
+            'tlp' => 'max:50'
         ];
     }
 }

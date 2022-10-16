@@ -33,6 +33,8 @@ return new class extends Migration
         Schema::create('t_kategori', function (Blueprint $table) {
             $table->integer('id')->autoIncrement();
             $table->string('nama', 50);
+            $table->integer('id_perusahaan');
+            $table->foreign('id_perusahaan')->references('id')->on('t_perusahaan')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
@@ -54,6 +56,8 @@ return new class extends Migration
         Schema::create('t_satuan', function (Blueprint $table) {
             $table->integer('id')->autoIncrement();
             $table->string('nama', 50);
+            $table->integer('id_perusahaan');
+            $table->foreign('id_perusahaan')->references('id')->on('t_perusahaan')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
@@ -61,6 +65,8 @@ return new class extends Migration
         Schema::create('t_merek', function (Blueprint $table) {
             $table->integer('id')->autoIncrement();
             $table->string('nama', 50);
+            $table->integer('id_perusahaan');
+            $table->foreign('id_perusahaan')->references('id')->on('t_perusahaan')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });

@@ -15,9 +15,10 @@
             <div class="form-group row">
                 <div class="form-group" style="width: 95%; margin: auto;">
                     <label for="nama">Nama Merek</label>
-                    <input type="text" class="form-control" id="nama" placeholder="Nama Kategori" name="nama">
+                    <input type="text" class="form-control" id="nama" placeholder="Nama Merek" name="nama">
                 </div>
             </div>
+            <input type="text" name="id_perusahaan" value="{{ $cPerusahaan->id }}" style="display: none;">
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

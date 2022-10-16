@@ -24,22 +24,22 @@ class StoreBarangRequest extends FormRequest
     public function rules()
     {
         return [
-            'kode' => 'required',
-            'nama' => 'required',
+            'kode' => 'required|string|max:50',
+            'nama' => 'required|string|max:50',
             'barcode' => 'required',
-            'tebal' => 'required',
-            'panjang' => 'required',
+            'tebal' => 'required|string|max:50',
+            'panjang' => 'required|string|max:50',
             'id_kategori' => 'required',
             'id_supplier' => 'required',
             'id_satuan' => 'required',
             'id_merek' => 'required',
             'id_perusahaan' => 'required',
-            'stock' => 'required',
-            'stock_minimal' => 'required',
-            'harga_beli' => 'required',
-            'keuntungan' => 'required',
-            'keterangan' => 'required',
-            'status' => 'required'
+            'stock' => 'required|numeric',
+            'stock_minimal' => 'required|numeric',
+            'harga_beli' => 'required|numeric',
+            'keuntungan' => 'required|numeric',
+            'keterangan' => 'required|string|max:255',
+            'status' => 'required|max:11'
         ];
     }
 }

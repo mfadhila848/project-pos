@@ -18,6 +18,7 @@ class PelangganController extends Controller
     {
         $data['pelanggan'] = Pelanggan::leftJoin('t_perusahaan AS P', 'P.id', 't_pelanggan.id_perusahaan')
         ->select('t_pelanggan.*', 'P.nama AS nama_perusahaan')     
+        ->where('t_pelanggan.id_perusahaan', auth()->user()->id_perusahaan)     
         ->orderBy('t_pelanggan.id', 'desc')
         ->get();
         $data['cPerusahaan'] = Perusahaan::select('*')->where('id', auth()->user()->id_perusahaan)->first();

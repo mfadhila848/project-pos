@@ -8,7 +8,7 @@
 @endpush
 
 @section('title')
-  <title>Satuan Page | {{ $cPerusahaan[0]->nama }}</title>
+  <title>Satuan Page | {{ $cPerusahaan->nama }}</title>
 @endsection
 
 @section('contents')
@@ -21,7 +21,7 @@
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
                 <li class="breadcrumb-item active">Satuan Page</li>
               </ol>
             </div>
@@ -108,14 +108,14 @@
         
             if(mode === 'edit'){
                 modal.find('#modal-title').text("Edit Data Satuan")
-                modal.find('.modal-body #nama_satuan').val(nama_satuan)
+                modal.find('.modal-body #nama').val(nama_satuan)
                 modal.find('.modal-footer #btn-submit').text('Update')
                 modal.find('.modal-body form').attr('action', '/satuan/' + id_satuan)
                 modal.find('.modal-body #method').html('{{ method_field('PATCH') }}')
             } else {
                 modal.find('#modal-title').text("Tambah Data Satuan")
                 modal.find('.modal-body #id_satuan').val('')
-                modal.find('.modal-body #nama_satuan').val('')
+                modal.find('.modal-body #nama').val('')
                 modal.find('.modal-footer #btn-submit').text('Submit')
                 modal.find('.modal-body #method').html('')
             }

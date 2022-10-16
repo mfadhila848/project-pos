@@ -24,9 +24,9 @@ class StorePelangganRequest extends FormRequest
     public function rules()
     {
         return [
-            'nama' => 'required',
+            'nama' => 'required|max:50',
             'alamat' => 'required',
-            'tlp' => 'required'
+            'tlp' => 'required|max:50'
         ];
     }
 }

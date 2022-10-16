@@ -30,7 +30,7 @@
                     <input type="text" class="form-control" id="tlp" placeholder="No Telepon" name="tlp">
                 </div>
             </div>
-            <input type="text" name="id_perusahaan" value="1" style="display: none;">
+            <input type="text" name="id_perusahaan" value="{{ $cPerusahaan->id }}" style="display: none;">
 
     </div>
     <div class="modal-footer">

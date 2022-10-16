@@ -18,6 +18,7 @@
                     <input type="text" class="form-control" id="nama" placeholder="Nama Kategori" name="nama">
                 </div>
             </div>
+            <input type="text" name="id_perusahaan" value="{{ $cPerusahaan->id }}" style="display: none;">
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

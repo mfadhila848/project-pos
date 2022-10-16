@@ -21,7 +21,7 @@
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
                 <li class="breadcrumb-item active">Perusahaan Page</li>
               </ol>
             </div>
@@ -68,7 +68,7 @@
                         </button>
                     </div>
                 @endif
-                <form action="" method="POST">
+                <form action="" method="POST" enctype="multipart/form-data">
                   @csrf
                   <input type="hidden" name="id" value="{{ $cPerusahaan->id }}">
                   <div class="form-group row">
@@ -130,7 +130,7 @@
                       <label for="file">Logo Sebelumnya | <a href="#" id="fileSelect">Pilih Logo Baru</a></label>
                       <br>
                       <img src="{{ $cPerusahaan->logo }}" alt="{{ $cPerusahaan->nama }}" width="200">
-                      <input type="file" name="image" id="file" style="display: none;" class="form-control">
+                      <input type="file" name="logo" id="file" style="display: none;" class="form-control">
                       
                       <br><br>
                       <label>Logo Baru</label>
@@ -139,9 +139,8 @@
                       </div>
                     </div>
                   </div>
-                  <a href="#" id="tombol" class="btn btn-primary merah" style="display: none;">Reset Image</a>
-                  <button type="reset" class="btn btn-primary merah">Reset Data</button>
-                  <button type="submit" class="btn btn-primary" id="btn-submit" style="margin: 16px;">Simpan Data</button>
+                  <button type="button" id="tombol" class="btn btn-primary" style="display: none; margin-left: 0,25rem; margin-right: 10px;">Reset Image</a>
+                  <button type="submit" class="btn btn-primary" id="btn-submit">Simpan Data</button>
                 </form>
           </div>
           <!-- /.card-footer-->
@@ -153,5 +152,5 @@
 @endsection
 
 @push('scripts')
-    
+  <script src="/assets/js/previewImage.js"></script>
 @endpush

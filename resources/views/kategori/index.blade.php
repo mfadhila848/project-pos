@@ -21,7 +21,7 @@
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
                 <li class="breadcrumb-item active">Kategori Page</li>
               </ol>
             </div>
@@ -108,14 +108,14 @@
         
             if(mode === 'edit'){
                 modal.find('#modal-title').text("Edit Data Kategori")
-                modal.find('.modal-body #nama_kategori').val(nama_kategori)
+                modal.find('.modal-body #nama').val(nama_kategori)
                 modal.find('.modal-footer #btn-submit').text('Update')
                 modal.find('.modal-body form').attr('action', '/kategori/' + id_kategori)
                 modal.find('.modal-body #method').html('{{ method_field('PATCH') }}')
             } else {
                 modal.find('#modal-title').text("Tambah Data Kategori")
                 modal.find('.modal-body #id_kategori').val('')
-                modal.find('.modal-body #nama_kategori').val('')
+                modal.find('.modal-body #nama').val('')
                 modal.find('.modal-footer #btn-submit').text('Submit')
                 modal.find('.modal-body #method').html('')
             }

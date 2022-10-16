@@ -11,6 +11,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('assets') }}/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="{{ asset('assets') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+  <link rel="icon" href="{{ $cPerusahaan->logo }}" type="image/png">
   <style>
     #bgBlueLightWhiteColor {
       background: #4195D5; 
@@ -56,6 +57,10 @@
                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                 Profile
             </a>
+            <a class="dropdown-item" href="{{ url('changePW') }}">
+              <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
+              Change Password
+            </a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-items">
               <form action="{{ route('logout') }}" method="post">
@@ -73,7 +78,7 @@
   <aside class="main-sidebar sidebar-primary elevation-4" id="bgBlueLightWhiteColor">
     <!-- Brand Logo -->
     <a href="{{ asset('assets') }}/index3.html" class="brand-link">
-      <img src="{{ asset('assets') }}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{{ $cPerusahaan->logo }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3 border border-white" style="opacity: .8">
       <span class="brand-text">{{ $cPerusahaan->nama }}</span>
     </a>
 
@@ -82,7 +87,7 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex divider">
         <div class="image">
-          <img src="{{ asset('assets') }}/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ asset('assets') }}/img/admin.png" class="img-circle elevation-2 border border-white" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ auth()->user()->nama }}</a>
@@ -135,7 +140,7 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('pegawai2') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Tambah Pegawai</p>
                     </a>

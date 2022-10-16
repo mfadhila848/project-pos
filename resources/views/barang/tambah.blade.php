@@ -18,7 +18,7 @@
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
                 <li class="breadcrumb-item active">Barang Page</li>
               </ol>
             </div>
@@ -44,6 +44,18 @@
             </div>
           </div>
           <div class="card-body">
+            @if($errors->any())
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
             <form action="" method="POST">
                 @csrf
                 <div id="method"></div>
@@ -68,13 +80,13 @@
                 <div class="form-group row">
                     <div class="form-group" style="width: 95%; margin: auto;">
                         <label for="tebal">Tebal Barang</label>
-                        <input type="number" class="form-control" id="tebal" placeholder="Tebal Barang" name="tebal">
+                        <input type="text" class="form-control" id="tebal" placeholder="Tebal Barang" name="tebal">
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="form-group" style="width: 95%; margin: auto;">
                         <label for="panjang">Panjang Barang</label>
-                        <input type="number" class="form-control" id="panjang" placeholder="Panjang Barang" name="panjang">
+                        <input type="text" class="form-control" id="panjang" placeholder="Panjang Barang" name="panjang">
                     </div>
                 </div>
                 <div class="form-group" style="width: 97%; margin: auto;">
@@ -117,7 +129,7 @@
                     </select>
                 </div>
                 <br>
-                <input type="text" class="form-control" name="id_perusahaan" value="1" style="display: none;">
+                <input type="text" class="form-control" name="id_perusahaan" value="{{ $cPerusahaan->id }}" style="display: none;">
                 <div class="form-group row">
                     <div class="form-group" style="width: 95%; margin: auto;">
                         <label for="stock">Stock Barang</label>
@@ -139,7 +151,7 @@
                 <div class="form-group row">
                     <div class="form-group" style="width: 95%; margin: auto;">
                         <label for="keuntungan">Keuntungan Barang</label>
-                        <input type="number" min="1" max="100" step="5" class="form-control" id="keuntungan" placeholder="Keuntungan Barang" name="keuntungan">
+                        <input type="number" min="1" max="100" class="form-control" id="keuntungan" placeholder="Keuntungan Barang" name="keuntungan">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -151,7 +163,11 @@
                 <div class="form-group row">
                     <div class="form-group" style="width: 95%; margin: auto;">
                         <label for="status">Status Barang</label>
-                        <input type="number" class="form-control" id="status" placeholder="Status Barang" name="status">
+                        <select class="form-control" name="status" id="status">
+                            <option value="" disabled="disabled" selected="true">Choose Status</option>
+                            <option value="1">Aktif</option>
+                            <option value="2">Tidak Aktif</option>
+                        </select>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary" id="btn-submit" style="margin-left: 0.25rem;">Simpan Data</button>

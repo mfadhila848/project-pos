@@ -23,9 +23,10 @@ class User extends Authenticatable
         'nama', 
         'alamat', 
         'tlp',
-        'id_pegawai',
         'username',
-        'password'
+        'password',
+        'hak_akses',
+        'id_perusahaan'
     ];
 
     /**

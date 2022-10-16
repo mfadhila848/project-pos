@@ -39,12 +39,6 @@ class PerusahaanController extends Controller
     public function store(StorePerusahaanRequest $request)
     {
         $perusahaan = Perusahaan::select('*')->where('id', auth()->user()->id_perusahaan)->first();
-        dd($request); die;
-        $getMime = $request->file('image')->getMimeType(); 
-        $explodedMime = explode('/' ,$getMime);
-        $mime = end($explodedMime);
-        $name = Str::random(40) . '.' . $mime;
-        $request->logo->move('assets/img', $name);
 
         if($request->nama){
             $request->validate([
@@ -128,6 +122,16 @@ class PerusahaanController extends Controller
         }
 
         if($request->logo){
+            $request->validate([
+                'image' => 'image|mimes:jpg,png,jpeg,gif,svg',
+            ]);
+
+            $getMime = $request->file('logo')->getMimeType(); 
+            $explodedMime = explode('/' ,$getMime);
+            $mime = end($explodedMime);
+            $name = Str::random(25) . '.' . $mime;
+            $request->logo->move('assets/img', $name);
+
             $perusahaan->logo = ('/assets/img/' . $name);
         } else {
             $perusahaan->logo = $perusahaan->logo;

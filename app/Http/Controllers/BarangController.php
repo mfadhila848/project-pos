@@ -32,7 +32,8 @@ class BarangController extends Controller
         ->leftJoin('t_satuan AS ST', 'ST.id', 't_barang.id_satuan')
         ->leftJoin('t_merek AS M', 'M.id', 't_barang.id_merek')
         ->leftJoin('t_perusahaan AS P', 'P.id', 't_barang.id_perusahaan')
-        ->select('t_barang.*', 'K.nama AS nama_kategori', 'SP.nama AS nama_supplier', 'ST.nama AS nama_satuan', 'M.nama AS nama_merek', 'P.nama AS nama_perusahaan')     
+        ->select('t_barang.*', 'K.nama AS nama_kategori', 'SP.nama AS nama_supplier', 'ST.nama AS nama_satuan', 'M.nama AS nama_merek', 'P.nama AS nama_perusahaan')
+        ->where('t_barang.id_perusahaan', auth()->user()->id_perusahaan)     
         ->orderBy('t_barang.id', 'desc')
         ->get();
         
